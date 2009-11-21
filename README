@@ -1,0 +1,7 @@
+Please visit http://thisisrobv.com for sample usage and more information.
+
+REQUIREMENTS:
+jQuery
+
+SAMPLE USAGE:
+$('a[rel*=scan_results]').accordian({active:'less_info', before:'More Info', after:'Less Info'});
