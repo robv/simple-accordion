@@ -4,4 +4,4 @@ REQUIREMENTS:
 jQuery
 
 SAMPLE USAGE:
-$('a[rel*=scan_results]').accordian({active:'less_info', before:'More Info', after:'Less Info'});
+$('a[rel*=accordion]').simple_accordion({active:'less_info', before:'More Info', after:'Less Info'});
