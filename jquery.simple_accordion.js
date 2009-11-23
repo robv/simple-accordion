@@ -3,6 +3,9 @@
 	$.fn.simple_accordion = function(params) {
 		
 		jQuery.extend(jQuery.easing, {
+			easeInQuart: function (x, t, b, c, d) {
+					return c*(t/=d)*t*t*t + b;
+				},
 			easeOutQuart: function (x, t, b, c, d) {
 				return -c * ((t=t/d-1)*t*t*t - 1) + b;
 			}
@@ -25,7 +28,7 @@
 				// If it's already being shown lets hide it and stop
 				if ($($this_link.attr('href')).css('display') !== 'none')
 				{
-					$($this_link.attr('href')).hide('slow', 'easeOutQuart');
+					$($this_link.attr('href')).slideUp({duration: 500, easing: 'easeOutQuart'});
 					$this_link.removeClass(params.active);
 					if (params.before)
 					{
@@ -37,7 +40,7 @@
 					// Lets hide all items that are related before we show the current one
 					$('a[' + params.attribute + '*=' + $this_link.attr(params.attribute) + ']').each(function() {
 						$this_links = $(this);
-						$($this_links.attr('href')).hide('slow', 'easeOutQuart');
+						$($this_links.attr('href')).slideUp({duration: 500, easing: 'easeOutQuart'});
 						$this_links.removeClass(params.active);
 						if (params.before)
 						{
@@ -45,7 +48,7 @@
 						}
 					});
 				
-					$($this_link.attr('href')).slideDown('fast');
+					$($this_link.attr('href')).slideDown({duration: 500, easing: 'easeInQuart'});
 					$this_link.addClass(params.active);
 					if (params.after)
 					{
