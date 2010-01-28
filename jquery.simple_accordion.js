@@ -1,17 +1,19 @@
 (function($) {
 
-	$.fn.simple_accordion = function(params) {
-		
-		jQuery.extend(jQuery.easing, {
+	// Add easeOutQuart easing method because this is used by default.
+	if ($.easing.easeOutQuart == undefined)
+	{
+		$.extend($.easing, {
 			easeOutQuart: function (x, t, b, c, d) {
-				return -c * ((t=t/d-1)*t*t*t - 1) + b;
+				return -c * ((t = t / d - 1) * t * t * t - 1) + b;
 			}
 		});
-		
-		// merge default and user parameters
-		params = $.extend({attribute:'rel', active:'active', before:'', after:'', custom_easing:'easeOutQuart'}, params);
+	}
 
-		// traverse all nodes
+	$.fn.simple_accordion = function(params) {
+		
+		params = $.extend({attribute: 'rel', active: 'active', before: '', after: '', custom_easing: 'easeOutQuart'}, params);
+
 	    return this.each(function() {
 
 	        var $this = $(this);
@@ -56,7 +58,6 @@
 
 	    });
 
-		// allow jQuery chaining
 		return this;
 	};
 
